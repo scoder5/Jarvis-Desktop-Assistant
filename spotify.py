@@ -22,5 +22,6 @@ def Spotify(name):
     pt.click(x=595, y=36)
     keyboard.write(name)
     sleep(4)
-    pt.click(x=869, y=361)
+    pt.click(x=867, y=449)
+    pt.click(x=867, y=449)
 
