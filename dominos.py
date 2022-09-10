@@ -1,14 +1,17 @@
 from time import sleep
-import pyttsx3
+from gtts import gTTS
+import playsound
 import webbrowser as web
 import pyautogui as pt
 import speech_recognition as sr
 import os
 
 def speak(text):
-    engine = pyttsx3.init('sapi5')
-    engine.say(text)
-    engine.runAndWait()
+    tts = gTTS(text=text, lang='en-in')
+    filename = "voicee.mp3"
+    tts.save(filename)
+    playsound.playsound(filename)
+    os.remove(filename)
 
 def takeCommand():
     r = sr.Recognizer()

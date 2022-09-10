@@ -1,5 +1,6 @@
-import pyttsx3
-#import playsound
+#import pyttsx3
+from gtts import gTTS
+import playsound
 import speech_recognition as sr
 import webbrowser as web
 import keyboard
@@ -13,17 +14,15 @@ import dino
 import spotify
 import pyautogui as pt
 
-engine = pyttsx3.init()
-voices = engine.getProperty('voices')   
-engine.setProperty("rate", 120)
-engine.setProperty('voice', voices[1].id)
-
 user = ['hello', 'wake up', 'you there','howdy','hola','hey','hi','wassup','kaise ho','help','need']
 bot = ['hello sir, welcome back','welcome back sir','at your service sir','how can i help you sir','hi sir']
 
 def speak(text):
-    engine.say(text)
-    engine.runAndWait()
+    tts = gTTS(text=text, lang='en-in')
+    filename = "voice.mp3"
+    tts.save(filename)
+    playsound.playsound(filename)
+    os.remove(filename) 
 
 def chatterbot(text):
     for word in text.split():

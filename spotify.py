@@ -1,13 +1,17 @@
+import playsound
 import pyautogui as pt
 import keyboard
 from time import sleep
 import os
-import pyttsx3 as tts
+# import pyttsx3 as tts
+from gtts import gTTS
 
 def speak(text):
-    engine = tts.init('sapi5')
-    engine.say(text)
-    engine.runAndWait()
+    tts = gTTS(text=text, lang='en-in')
+    filename = "voices.mp3"
+    tts.save(filename)
+    playsound.playsound(filename)
+    os.remove(filename)
 
 def Spotify(name):
     speak("Playing it sir")
